@@ -35,7 +35,7 @@
       ["modifyvm", "{{.Name}}", "--cpus", "2"]
     ],
 
-    "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p"
+    "shutdown_command": "sudo /sbin/halt -h -p"
   }],
   "post-processors": [{
     "output": "build/debian-7.2.0-amd64.box",
@@ -43,12 +43,12 @@
   }],
   "provisioners": [{
     "type": "shell",
-    "execute_command": "{{.Vars}} '{{.Path}}'",
+    "execute_command": "{{.Vars}} bash '{{.Path}}'",
     "scripts": [
-      "scripts/vagrant.sh",
-      "scripts/vboxguest.sh",
-      "scripts/chef.sh",
-      "scripts/compact.sh"
+      "scripts/vagrant",
+      "scripts/vboxguest",
+      "scripts/chef",
+      "scripts/compact"
     ]
   }]
 }
