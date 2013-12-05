@@ -1,6 +1,6 @@
 This is a packer.io template for a Debian stable (7.2.0) vagrant box.
 
-== Usage ==
+## Usage
 ```bash
 $ packer build debian-7.2.0-amd64-vagrant-chet.json
 ```
