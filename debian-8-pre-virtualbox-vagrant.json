@@ -1,0 +1,53 @@
+{
+  "builders": [{
+    "type": "virtualbox",
+    "virtualbox_version_file": ".vbox_version",
+    "headless": false,
+
+    "guest_os_type": "Debian_64",
+    "disk_size": 4096,
+
+    "iso_url": "http://ftp.nl.debian.org/debian/dists/wheezy/main/installer-amd64/20130613+deb7u1/images/netboot/mini.iso",
+    "iso_checksum": "c78ca8114c6efb597b5d5d0fe3787a166a1d455774f398c38e3d45e3bcd9c96c",
+    "iso_checksum_type": "sha256",
+
+    "boot_command": [
+      "<esc><esc><wait>",
+      "linux vga=788 initrd=initrd.gz noapic auto url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/debian-8-pre-amd64-vagrant.cfg ",
+      "keymap=us locale=en_US ",
+      "priority=critical ",
+      "hostname={{ .Name }} ",
+      "DEBCONF_DEBUG=5",
+      "<enter>"
+    ],
+    "boot_wait": "8s",
+
+    "http_directory": "http",
+    "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_port": 22,
+    "ssh_wait_timeout": "3600s",
+
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "512"],
+      ["modifyvm", "{{.Name}}", "--cpus", "2"]
+    ],
+
+    "shutdown_command": "sudo /sbin/halt -h -p"
+  }],
+  "post-processors": [{
+    "output": "build/debian-8-pre-amd64.box",
+    "type": "vagrant"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "execute_command": "{{.Vars}} bash '{{.Path}}'",
+    "scripts": [
+      "scripts/vagrant",
+      "scripts/vboxguest",
+      "scripts/compact"
+    ]
+  }]
+}
