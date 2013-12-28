@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+if type apt-get >/dev/null 2>&1; then
+	echo "Cleaning apt files"
+    apt-get clean
+fi
+
+if type yum >/dev/null 2>&1; then
+	echo "Cleaning yum files"
+    yum clean all
+fi
+
+# Removing leftover leases and persistent rules
+echo "Cleaning up dhcp leases"
+rm /var/lib/dhcp/*
+
+echo "Cleaning up udev rules"
+if [ -e /etc/udev/rules.d/70-persistent-net.rules ]; then
+	# Make sure Udev doesn't block our network
+	rm /etc/udev/rules.d/70-persistent-net.rules
+	mkdir /etc/udev/rules.d/70-persistent-net.rules
+fi
+if [ -d /dev/.udev/ ]
+	rm -rf /dev/.udev/
+fi
+if [ -e /lib/udev/rules.d/75-persistent-net-generator.rules ]; then
+	rm /lib/udev/rules.d/75-persistent-net-generator.rules
+fi
+
+if [ -e /etc/network/interfaces ]; then
+	echo "Adding a 2 sec delay to the interface up, to make the dhclient happy"
+	echo "pre-up sleep 2" >> /etc/network/interfaces
+fi
+
+echo "Zeroing out free space"
+dd if=/dev/zero of=/junk bs=1M
+rm -f /junk
+
+echo "Syncing disk"
+sync
