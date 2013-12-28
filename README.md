@@ -1,8 +1,8 @@
-This is a packer.io template for a Debian stable (7.2.0) vagrant box.
+This is packer.io templates for a Linux based systems, currently only covering debian and ubuntu.
 
 ## Usage
 ```bash
-$ packer build debian-7.2.0-amd64-vagrant-chet.json
+$ packer build debian-7.2.0-amd64-vagrant-chef.json
 ```
 
 After it has been built, add it to vagrant:
@@ -10,5 +10,5 @@ After it has been built, add it to vagrant:
 $ vagarant box add build/debian-7.2.0-amd64.box
 ```
 
-Now you can referance it in your vagrant files:
+Now you can reference it in your vagrant files:
 [TODO Vagrantfile sniplet]
