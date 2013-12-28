@@ -11,4 +11,6 @@ $ vagarant box add build/debian-7.2.0-amd64.box
 ```
 
 Now you can reference it in your vagrant files:
-[TODO Vagrantfile sniplet]
+```bash
+$ vagrant init debian-7.2.0-amd64
+```
