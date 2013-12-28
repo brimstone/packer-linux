@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-wget -O - http://opscode.com/chef/install.sh | sudo -E bash -s
+wget -O - http://opscode.com/chef/install.sh | bash -s

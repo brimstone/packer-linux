@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 if type apt-get >/dev/null 2>&1; then
-    sudo -E apt-get clean
+    apt-get clean
 fi
 
 if type yum >/dev/null 2>&1; then
-    sudo -E yum clean all
+    yum clean all
 fi
 
-sudo -E dd if=/dev/zero of=/junk bs=1M
-sudo -E rm -f /junk
+dd if=/dev/zero of=/junk bs=1M
+rm -f /junk
 
 sync

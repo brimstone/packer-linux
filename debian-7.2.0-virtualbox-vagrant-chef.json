@@ -43,7 +43,7 @@
   }],
   "provisioners": [{
     "type": "shell",
-    "execute_command": "{{.Vars}} bash '{{.Path}}'",
+    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
     "scripts": [
       "scripts/vagrant",
       "scripts/vboxguest",

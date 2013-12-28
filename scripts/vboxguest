@@ -2,8 +2,8 @@
 
 mkdir /tmp/virtualbox
 VERSION=$(cat $HOME/.vbox_version)
-sudo -E mount -o loop $HOME/VBoxGuestAdditions_$VERSION.iso /tmp/virtualbox
-sudo -E sh /tmp/virtualbox/VBoxLinuxAdditions.run -- --force
-sudo -E umount /tmp/virtualbox
-sudo -E rmdir /tmp/virtualbox
+mount -o loop $HOME/VBoxGuestAdditions_$VERSION.iso /tmp/virtualbox
+sh /tmp/virtualbox/VBoxLinuxAdditions.run -- --force
+umount /tmp/virtualbox
+rmdir /tmp/virtualbox
 rm $HOME/VBoxGuestAdditions_$VERSION.iso
