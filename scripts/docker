@@ -1,0 +1,6 @@
+# enable memory and swap cgroup
+sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"/g'  /etc/default/grub
+/usr/sbin/update-grub
+
+# add docker group and add vagrant to it
+usermod -a -G docker vagrant
