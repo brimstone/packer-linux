@@ -7,8 +7,8 @@
     "guest_os_type": "Debian_64",
     "disk_size": 4096,
 
-    "iso_url": "http://ftp.nl.debian.org/debian/dists/wheezy/main/installer-amd64/20130613+deb7u1/images/netboot/mini.iso",
-    "iso_checksum": "c78ca8114c6efb597b5d5d0fe3787a166a1d455774f398c38e3d45e3bcd9c96c",
+    "iso_url": "http://ftp.debian.org/debian/dists/wheezy/main/installer-amd64/current/images/netboot/mini.iso",
+    "iso_checksum": "2f19abac637a070f30f06cdd4713f593430720865dfcecc13e272e4d0da2f6e3",
     "iso_checksum_type": "sha256",
 
     "boot_command": [
@@ -48,7 +48,7 @@
       "scripts/vagrant",
       "scripts/vboxguest",
       "scripts/chef",
-      "scripts/compact"
+      "scripts/cleanup"
     ]
   }]
 }
