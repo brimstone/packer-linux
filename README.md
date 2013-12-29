@@ -14,3 +14,5 @@ Now you can reference it in your vagrant files:
 ```bash
 $ vagrant init debian-7.2.0-amd64
 ```
+
+Bits stolen from https://bitbucket.org/ariya/packer-vagrant-linux.git
