@@ -20,7 +20,7 @@ if [ -e /etc/udev/rules.d/70-persistent-net.rules ]; then
 	rm /etc/udev/rules.d/70-persistent-net.rules
 	mkdir /etc/udev/rules.d/70-persistent-net.rules
 fi
-if [ -d /dev/.udev/ ]
+if [ -d /dev/.udev/ ]; then
 	rm -rf /dev/.udev/
 fi
 if [ -e /lib/udev/rules.d/75-persistent-net-generator.rules ]; then
