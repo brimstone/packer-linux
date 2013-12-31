@@ -1,5 +1,6 @@
 {
   "builders": [{
+	"name": "debian-7.2.0",
     "type": "virtualbox",
     "virtualbox_version_file": ".vbox_version",
     "headless": false,

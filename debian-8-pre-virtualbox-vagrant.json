@@ -1,5 +1,6 @@
 {
   "builders": [{
+	"name": "debian-8-pre",
     "type": "virtualbox",
     "virtualbox_version_file": ".vbox_version",
     "headless": false,
