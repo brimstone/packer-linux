@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 apt-get -y -q purge virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11
+eval HOME="$(printf "~%q" "${SUDO_USER:=$USER}")"
 mkdir /tmp/virtualbox
 VERSION=$(cat $HOME/.vbox_version)
 mount -o loop $HOME/VBoxGuestAdditions_$VERSION.iso /tmp/virtualbox
