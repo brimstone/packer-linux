@@ -48,6 +48,7 @@
     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
     "scripts": [
       "scripts/vagrant",
+      "scripts/chef",
       "scripts/vboxguest",
       "scripts/cleanup"
     ]
