@@ -9,7 +9,7 @@
 		"disk_size": 10240,
 
 		"iso_url": "http://archive.ubuntu.com/ubuntu/dists/precise-updates/main/installer-amd64/current/images/netboot/mini.iso",
-		"iso_checksum": "2aff883e22e4a2f26ef6c10e2c97606e9728832361a3e6214fba7f637ed9a990",
+		"iso_checksum": "95648fcdb5d028e64145a2fe2f2f28c946d219da366389295a61fed296ca79f0",
 		"iso_checksum_type": "sha256",
 
 		"boot_command": [
