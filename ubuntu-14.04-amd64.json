@@ -1,0 +1,56 @@
+{
+  "builders": [{
+	"name": "ubuntu-14.04",
+    "type": "virtualbox-iso",
+    "virtualbox_version_file": ".vbox_version",
+    "headless": true,
+
+    "guest_os_type": "Ubuntu_64",
+    "disk_size": 10240,
+
+    "iso_url": "http://archive.ubuntu.com/ubuntu/dists/trusty/main/installer-amd64/current/images/netboot/mini.iso",
+    "iso_checksum": "2f7c176ed5c2cfac3bf138e1a509ef3a799d6879e129cbedbf166d1cf9b09cac",
+    "iso_checksum_type": "sha256",
+
+    "boot_command": [
+      "<esc><esc><wait>",
+      "linux noapic preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ubuntu-14.04-amd64.cfg ",
+      "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+      "hostname={{ .Name }} ",
+      "fb=false debconf/frontend=noninteractive ",
+      "console-setup/ask_detect=false ",
+		"keymap=us priority=critical ",
+      "initrd=initrd.gz <enter>"
+    ],
+    "boot_wait": "12s",
+
+    "http_directory": "http",
+    "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_port": 22,
+    "ssh_wait_timeout": "10000s",
+
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "512"],
+      ["modifyvm", "{{.Name}}", "--cpus", "1"]
+    ],
+
+    "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p"
+  }],
+  "post-processors": [{
+    "output": "build/ubuntu-14.04-amd64.box",
+    "type": "vagrant"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E bash '{{.Path}}'",
+    "scripts": [
+      "scripts/vagrant",
+      "scripts/chef",
+      "scripts/vboxguest",
+      "scripts/cleanup"
+    ]
+  }]
+}
